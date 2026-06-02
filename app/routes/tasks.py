@@ -9,7 +9,7 @@ def view_tasks():
     if 'user' not in session:
         return redirect(url_for('auth.login'))
 
-    tasks = Task.query.all()
+    tasks =  Task.query.filter_by(user_id=session['user']).all()
 
     return render_template('task.html', tasks=tasks)
 
@@ -22,7 +22,7 @@ def add_task():
     title = request.form.get('title')
 
     if title:
-        new_task = Task(title=title, status='Pending')
+        new_task = Task(title=title, status='Pending', user_id=session['user'])
         db.session.add(new_task)
         db.session.commit()
 
@@ -33,7 +33,7 @@ def add_task():
 
 @tasks_bp.route('/toggle/<int:task_id>', methods=['POST'])
 def toggle_status(task_id):
-    task = Task.query.get(task_id)
+    task = Task.query.filter_by(id=task_id,user_id=session['user']).first()
 
     if task:
         if task.status == 'Pending':
@@ -52,7 +52,7 @@ def toggle_status(task_id):
 
 @tasks_bp.route('/clear', methods=['POST'])
 def clear_tasks():
-    Task.query.delete()
+    Task.query.filter_by(user_id=session['user']).delete()
 
     db.session.commit()
 

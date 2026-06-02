@@ -14,9 +14,10 @@
                 <a href="{{ url_for('tasks.view_tasks') }}">Home</a>
 
                 {% if 'user' in session %}
-                    <a href="{{ url_for('auth.logout') }}">Logout</a>
+                <a href="{{ url_for('auth.logout') }}">Logout</a>
                 {% else %}
-                    <a href="{{ url_for('auth.login') }}">Login</a>
+                <a href="{{ url_for('auth.login') }}">Login</a>
+                <a href="{{ url_for('auth.signup') }}">Signup</a>
                 {% endif %}
             </nav>
         </div>
@@ -38,7 +39,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; {{2025}} My Flask To-Do App</p>
+            <p>&copy;2 JUNE 2026 My To-Do App</p>
         </div>
     </footer>
 </body>
