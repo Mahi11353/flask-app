@@ -14,7 +14,7 @@ body {
 
 header {
     background: linear-gradient(to_right, #0062E6, #33AeFF);
-    color: white;
+    color: #212529;
     padding: 20px 0;
 
     box-shadow: 0 2px 8px rgba(red, green, blue, alpha);
@@ -33,7 +33,7 @@ nav {
 }
 
 nav a {
-    color: white;
+    color: #212529;
     text-decoration: none;
     margin: 0 15px;
     font-weight: 500;
